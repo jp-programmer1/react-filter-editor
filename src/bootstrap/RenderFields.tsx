@@ -2,14 +2,14 @@ import React, { useCallback } from "react";
 import { fieldType, RenderFieldsProps} from "../interfaces/Interfaces";
 
 const SelectCustom = ({data, onChange}:RenderFieldsProps) => (
-  <input type="select" name={data.name} id={data.name} className="form-group" value={data.value?.toString()} onChange={(e) => onChange(e.target.value)}>
+  <input type="select" name={data.name} id={data.name} className="form-control" value={data.value?.toString()} onChange={(e) => onChange(e.target.value)}>
     {data.options && data.options.map(op => (
       <option value={op.value.toString()}>{op.label}</option>
     ))}
   </input>
 );
 const InputCustom = ({data, onChange}:RenderFieldsProps) => (
-  <input autoComplete='off'
+  <input autoComplete='off' className="form-control"
          //@ts-ignore
          type={data.fieldType} placeholder={data.label}
          name={data.name} 

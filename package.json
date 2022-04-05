@@ -1,0 +1,40 @@
+{
+  "name": "react-filter-editor",
+  "version": "1.0.0",
+  "description": "Library to filters",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc -p . && ncp ./src/theme ./lib/styles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jp-programmer1/react-filter-editor.git"
+  },
+  "keywords": [
+    "react-lib",
+    "library",
+    "filter",
+    "library-filter",
+    "react-filter",
+    "react-filter-editor"
+  ],
+  "author": "Juan Pablo Fernandez <jpprogrammer1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jp-programmer1/react-filter-editor/issues"
+  },
+  "homepage": "https://github.com/jp-programmer1/react-filter-editor#readme",
+  "devDependencies": {
+    "@types/react": "^17.0.43",
+    "react": "^18.0.0",
+    "typescript": "^4.6.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.11.0"
+  },
+  "dependencies": {
+    "ncp": "^2.0.0"
+  }
+}

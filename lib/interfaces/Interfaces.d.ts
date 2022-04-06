@@ -34,6 +34,7 @@ export interface UseFilter {
 export interface FilterEditor {
     options: Array<Options>;
     values: {};
+    className?: string;
     onChangeValues: (data: any) => void;
     getData: (data: any) => void;
     setVisibleValue: (nameFilter: string, value: any) => string;

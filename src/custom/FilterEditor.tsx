@@ -5,16 +5,17 @@ import '../../lib/styles/stylesTC.css';
 import { FieldComponent } from '../render-fields/RenderFields';
 
 /**
- * 
  * @param options object Array [{label:"Person Name", value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
  * @param values object {person: "Juan", date: "12/12/2019"};
  * @param onChangeValues function  to return select value (data:values) => void;
  * @param setVisibleValue function options to return tag value (nameFilter, value) => return string;
  * @param getData function to query all data [{active: true, color: "red", edit: true, fieldType: "number", label: "Login Code", name: "loginCode", value: ""}];
+ * @param configButtons object {add: {icon, text, addComponent}, remove: {icon, text, removeComponent}, filterActive: {icon, filterActiveComponent}, filterDisabled: {icon, filterDisabledComponent}}
+ * @param className container className
  * @returns {JSX.Element}
  * @constructor
  */
-const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setVisibleValue, configButtons }: FilterEditor) => {
+const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setVisibleValue, configButtons, className }: FilterEditor) => {
   const [viewFilter, setViewFilter] = useState<Number>();
   const [fieldEditMode, setFieldEditMode] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
@@ -29,7 +30,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
   }, [getData, dataFields]);
 
   return (
-    <React.Fragment>
+    <div className={className}>
       <div className='filter-TC-editor-container'>
         {dataFields.length > 0 && dataFields.map((d: Field, key: any) => (
           <React.Fragment key={key}>
@@ -111,7 +112,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
           </div>
         }
       </div>
-    </React.Fragment>
+    </div>
     
   )
 }

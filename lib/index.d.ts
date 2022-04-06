@@ -1,2 +1,2 @@
-import FilterEditor from "./bootstrap/FilterEditor";
+import FilterEditor from "./custom/FilterEditor";
 export { FilterEditor };

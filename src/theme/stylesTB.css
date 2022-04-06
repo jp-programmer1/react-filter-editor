@@ -1,5 +1,10 @@
 /** BOOTSTRAP **/
 /** ------------------------------ **/
+.filter-TB-editor-container{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 /* TAGS */
 .filter-TB-editor-container-tags{
   margin-right: 0.5rem;
@@ -7,7 +12,9 @@
 .filter-TB-editor-container-tags .filter-TB-editor-dropdown-container{
   display: flex;
   align-items: center;
-  width: 30%;
+}
+.filter-TB-editor-dropdown-container:focus{
+  box-shadow: none;
 }
 .filter-TB-editor-tag-icon{
   margin-right: 0.3rem;
@@ -20,9 +27,6 @@
 }
 .filter-TB-editor-container-tags .filter-TB-editor-dropdown-menu{
   width: max-content;
-  position: absolute;
-  inset: 0px auto auto 0px;
-  transform: translate(0px, 40px);
 }
 .filter-TB-editor-container-field{
   display: inline-flex;
@@ -41,11 +45,6 @@
   background-color: rgb(46, 174, 46);
 }
 /* OPTIONS */
-.filter-TB-editor-dropdown-menu{
-  position: absolute;
-  inset: 0px auto auto 0px;
-  transform: translate(0px, 40px);
-}
 .filter-TB-editor-dropdown-menu li{
   cursor: pointer;
 }

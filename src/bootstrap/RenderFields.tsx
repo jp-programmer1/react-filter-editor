@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { fieldType, RenderFieldsProps} from "../interfaces/Interfaces";
 
 const SelectCustom = ({data, onChange}:RenderFieldsProps) => (

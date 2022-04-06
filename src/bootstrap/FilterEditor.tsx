@@ -40,7 +40,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                 onMouseLeave={() => setViewFilter(-1)}
                 style={{ ...d.styles, opacity: d.active ? 1 : 0.5 }}
               >
-                <i className={d.icon || "fas fa-filter"}></i>
+                {d.icon && <i className={`${d.icon} filter-TB-editor-tag-icon`}></i>}
                 <span className='filter-TB-editor-tag'>{d.tag || d.value || d.label}</span>
                 <div className='filter-TB-editor-action-active'>
                   {(key === viewFilter || d.edit) &&
@@ -102,7 +102,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                 <li onClick={() => onAdd(op.name)} key={key} className="dropdown-item" data-rr-ui-dropdown-item>
                   <a>
                     {op.optionComponent && op.optionComponent}
-                    {!op.optionComponent && op.icon && <><i className={op.icon}></i> {op.label}</>}
+                    {!op.optionComponent && op.icon && <><i className={`filter-TB-editor-option-icon ${op.icon}`}></i> {op.label}</>}
                     {!op.optionComponent && !op.icon && op.label}
                   </a>
                 </li>

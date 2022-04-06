@@ -9,6 +9,9 @@
   align-items: center;
   width: 30%;
 }
+.filter-TB-editor-tag-icon{
+  margin-right: 0.3rem;
+}
 .filter-TB-editor-action-active{
   width: 10px;
   transition: all .2s ease-in;
@@ -45,5 +48,8 @@
 }
 .filter-TB-editor-dropdown-menu li{
   cursor: pointer;
+}
+.filter-TB-editor-option-icon{
+  opacity: 0.6;
 }
 /*------------------------------- */

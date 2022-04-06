@@ -1,28 +1,55 @@
 /** CUSTOM **/
 /** ------------------------------ **/
 /* TAGS */
-.filter-TC-editor-container{
-
-}
 .filter-TC-editor-container-tags{
-
+  margin-right: 0.5rem;
 }
 .filter-TC-editor-container-tags .filter-TC-editor-dropdown-container{
-
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+.filter-TC-editor-tag-icon{
+  margin-right: 0.3rem;
 }
 .filter-TC-editor-action-active{
-
+  width: 10px;
+  transition: all .2s ease-in;
+  cursor: pointer;
+  margin-left: 0.5rem;
 }
 .filter-TC-editor-container-tags .filter-TC-editor-dropdown-menu{
-
+  width: max-content;
+  position: absolute;
+  inset: 0px auto auto 0px;
+  transform: translate(0px, 40px);
 }
-
+.filter-TC-editor-container-field{
+  display: inline-flex;
+  padding: 5px;
+}
+.filter-TC-editor-field{
+  margin-right: 1rem;
+}
+.filter-TC-editor-circle{
+  width: 10px;
+  height: 10px;
+  border-radius: 5rem;
+  border: 2px solid rgb(46, 174, 46);
+}
+.circle-active {
+  background-color: rgb(46, 174, 46);
+}
 /* OPTIONS */
-.filter-TC-editor-container-options{
-
+.filter-TC-editor-dropdown-menu{
+  position: absolute;
+  inset: 0px auto auto 0px;
+  transform: translate(0px, 40px);
 }
-.filter-TC-editor-container-options .filter-TC-editor-dropdown-menu{
-
+.filter-TC-editor-dropdown-menu li{
+  cursor: pointer;
 }
-
-/** ------------------------------ **/
+.filter-TC-editor-option-icon{
+  opacity: 0.6;
+}
+/*------------------------------- */

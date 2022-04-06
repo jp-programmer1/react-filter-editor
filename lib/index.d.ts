@@ -1,2 +1,2 @@
-import FilterEditor from "./custom/FilterEditor";
+import FilterEditor from "./custom";
 export { FilterEditor };

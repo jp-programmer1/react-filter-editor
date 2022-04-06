@@ -75,6 +75,7 @@
   -webkit-box-shadow: 5px 5px 30px 5px rgba(0, 0, 0, 0.153); 
   box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.153);
   border-radius: 2px 0;
+  z-index: 999999;
 }
 .filter-TC-editor-option-icon{
   opacity: 0.6;
@@ -88,6 +89,7 @@
   width: 10rem;
   -webkit-box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.29); 
   box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.29);
+  z-index: 999999;
 }
 .filter-TC-editor-options-dropdown-menu li{
   list-style: none;

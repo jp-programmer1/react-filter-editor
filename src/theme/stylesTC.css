@@ -1,13 +1,35 @@
 /** CUSTOM **/
 /** ------------------------------ **/
 /* TAGS */
+.filter-TC-editor-container{
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
 .filter-TC-editor-container-tags{
   margin-right: 0.5rem;
+  transition: all .3s ease-in-out;
+}
+.filter-TC-editor-btn{
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid gray;
+  transition: all .3s ease-in-out;
+}
+.filter-TC-editor-btn:hover{
+  background-color: rgb(211, 210, 210);
+}
+.filter-TC-editor-btn-remove{
+  background-color: rgba(211, 12, 12, 0.657);
+  color: white;
+}
+.filter-TC-editor-btn-remove:hover{
+  background-color: rgba(161, 11, 11, 0.657);
+  opacity: 0.8;
 }
 .filter-TC-editor-container-tags .filter-TC-editor-dropdown-container{
   display: flex;
   align-items: center;
-  width: 30%;
 }
 .filter-TC-editor-tag-icon{
   margin-right: 0.3rem;
@@ -21,12 +43,11 @@
 .filter-TC-editor-container-tags .filter-TC-editor-dropdown-menu{
   width: max-content;
   position: absolute;
-  inset: 0px auto auto 0px;
-  transform: translate(0px, 40px);
 }
 .filter-TC-editor-container-field{
   display: inline-flex;
   padding: 5px;
+  padding: 0.5rem;
 }
 .filter-TC-editor-field{
   margin-right: 1rem;
@@ -40,16 +61,40 @@
 .circle-active {
   background-color: rgb(46, 174, 46);
 }
+.filter-TC-show{
+  display: block;
+}
+.filter-TC-hide{
+  display: none!important;
+}
 /* OPTIONS */
 .filter-TC-editor-dropdown-menu{
   position: absolute;
-  inset: 0px auto auto 0px;
-  transform: translate(0px, 40px);
-}
-.filter-TC-editor-dropdown-menu li{
-  cursor: pointer;
+  margin-top: 0.4rem;
+  background-color: white;
+  -webkit-box-shadow: 5px 5px 30px 5px rgba(0, 0, 0, 0.153); 
+  box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.153);
+  border-radius: 2px 0;
 }
 .filter-TC-editor-option-icon{
   opacity: 0.6;
+}
+.filter-TC-editor-options-dropdown-menu{
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 2px 0;
+  position: absolute;
+  width: 10rem;
+  -webkit-box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.29); 
+  box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.29);
+}
+.filter-TC-editor-options-dropdown-menu li{
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.filter-TC-editor-options-dropdown-menu li:hover{
+  background-color: rgba(134, 133, 133, 0.337);
 }
 /*------------------------------- */

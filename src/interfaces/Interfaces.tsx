@@ -7,7 +7,6 @@ export interface fieldType{
   text: Function;
   number: Function;
   select: Function;
-  datetime: Function;
   date: Function;
 }
 export interface Options {
@@ -53,4 +52,5 @@ export interface RenderFieldsProps{
   data:Field;
   onChange: (value:any) => void;
   onEditField?: (edit:boolean) => void;
+  className?:string
 }

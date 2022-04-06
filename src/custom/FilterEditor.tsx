@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { FieldComponent } from '../render-fields/RenderFields';
+import React, { useCallback, useEffect, useState } from 'react'
 import { Field, FilterEditor, Options } from '../interfaces/Interfaces';
 import { useFilter } from '../hooks/useFilter';
-import '../../lib/styles/stylesTB.css';
+import '../../lib/styles/stylesTC.css';
+import { FieldComponent } from '../render-fields/RenderFields';
 
 /**
  * 
@@ -30,19 +30,19 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
 
   return (
     <React.Fragment>
-      <div className='filter-TB-editor-container'>
+      <div className='filter-TC-editor-container'>
         {dataFields.length > 0 && dataFields.map((d: Field, key: any) => (
           <React.Fragment key={key}>
-            <div className="btn-group filter-TB-editor-container-tags" onClick={() => !fieldEditMode && onEdit(key)}>
+            <div className="filter-TC-editor-container-tags" onClick={() => !fieldEditMode && onEdit(key)}>
               <button type='button'
-                className={`filter-TB-editor-dropdown-container btn btn-sm btn-outline-secondary dropdown-toogle ${d.edit ? 'show' : ''}`}
+                className={`filter-TC-editor-btn filter-TC-editor-dropdown-container`}
                 onMouseEnter={() => setViewFilter(key)}
                 onMouseLeave={() => setViewFilter(-1)}
                 style={{ ...d.styles, opacity: d.active ? 1 : 0.5 }}
               >
-                {d.icon && <i className={`${d.icon} filter-TB-editor-tag-icon`}></i>}
-                <span className='filter-TB-editor-tag'>{d.tag || d.value || d.label}</span>
-                <div className='filter-TB-editor-action-active'>
+                {d.icon && <i className={`${d.icon} filter-TC-editor-tag-icon`}></i>}
+                <span className='filter-TC-editor-tag'>{d.tag || d.value || d.label}</span>
+                <div className='filter-TC-editor-action-active'>
                   {(key === viewFilter || d.edit) &&
                     <div onClick={() => onActivateFilter(key)} style={{ opacity: d.active ? 1 : 0.5 }}>
                       {d.active && configButtons &&
@@ -58,21 +58,21 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                         </>
                       }
                       {!configButtons &&
-                        <div className={`filter-TB-editor-circle ${d.active ? 'circle-active' : ''}`} ></div>
+                        <div className={`filter-TC-editor-circle ${d.active ? 'circle-active' : ''}`} ></div>
                       }
                     </div>
                   }
                 </div>
               </button>
-              <div className={`dropdown-menu filter-TB-editor-dropdown-menu ${d.edit ? 'show' : ''}`} 
+              <div className={`filter-TC-editor-dropdown-menu filter-TC-${d.edit ? 'show' : 'hide'}`} 
                    onMouseEnter={() => setFieldEditMode(true)}
                    x-placement="bottom-start"
                    onMouseLeave={() => setFieldEditMode(false)}>
-                <div className='filter-TB-editor-container-field'>
-                  <div className="filter-TB-editor-field">
-                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]} onEditField={setFieldEditMode} className="form-control" />
+                <div className='filter-TC-editor-container-field'>
+                  <div className="filter-TC-editor-field">
+                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]} onEditField={setFieldEditMode} className="filter-TC-editor-input" />
                   </div>
-                    <button type='button' className='btn btn-danger btn-sm' onClick={() => {onRemove(key); setFieldEditMode(false);}}>
+                    <button type='button' className='filter-TC-editor-btn filter-TC-editor-btn-remove' onClick={() => {onRemove(key); setFieldEditMode(false);}}>
                       {configButtons &&
                         <React.Fragment>
                           {configButtons.remove.icon && !configButtons.remove.removeComponent && <><i className={configButtons.remove.icon}></i>{configButtons.remove.text}</>}
@@ -87,8 +87,8 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
           </React.Fragment>
         ))}
         {optionsFilter.length > 0 &&
-          <div className="btn-group filter-TB-editor-container-options" onClick={() => setOpenOptions(!openOptions)}>
-            <button className={`btn btn-sm btn-outline-secondary dropdown-toogle ${openOptions ? 'show' : ""}`} type='button' data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="filter-TC-editor-container-options" onClick={() => setOpenOptions(!openOptions)}>
+            <button className="filter-TC-editor-btn" type='button' data-bs-toggle="dropdown" aria-expanded="false">
               {configButtons &&
                 <React.Fragment>
                   {configButtons.add.icon && !configButtons.add.addComponent && <><i className={configButtons.add.icon}></i> {configButtons.add.text}</>}
@@ -97,12 +97,12 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
               }
               {!configButtons && "Add Filter"}
             </button>
-            <ul className={`filter-TB-editor-dropdown-menu dropdown-menu ${openOptions ? 'show' : ""}`} >
+            <ul className={`filter-TC-editor-options-dropdown-menu filter-TC-${openOptions ? 'show' : "hide"}`} >
               {optionsFilter.map((op: Options, key: any) => (
-                <li onClick={() => onAdd(op.name)} key={key} className="dropdown-item" data-rr-ui-dropdown-item>
+                <li onClick={() => onAdd(op.name)} key={key} className="filter-TC-editor-dropdown-item" data-rr-ui-dropdown-item>
                   <a>
                     {op.optionComponent && op.optionComponent}
-                    {!op.optionComponent && op.icon && <><i className={`filter-TB-editor-option-icon ${op.icon}`}></i> {op.label}</>}
+                    {!op.optionComponent && op.icon && <><i className={`filter-TC-editor-option-icon ${op.icon}`}></i> {op.label}</>}
                     {!op.optionComponent && !op.icon && op.label}
                   </a>
                 </li>

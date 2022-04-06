@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { FilterEditor } from '../interfaces/Interfaces';
-import '../../lib/styles/stylesTB.css';
+import '../../lib/styles/stylesTC.css';
 /**
  *
  * @param options object Array [{label:"Person Name", value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];

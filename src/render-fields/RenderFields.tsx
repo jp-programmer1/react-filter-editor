@@ -2,11 +2,13 @@ import React from "react";
 import { fieldType, RenderFieldsProps} from "../interfaces/Interfaces";
 
 const SelectCustom = ({data, onChange, className}:RenderFieldsProps) => (
-  <input type="select" name={data.name} id={data.name} className={className} value={data.value?.toString()} onChange={(e) => onChange(e.target.value)}>
+  //@ts-ignore
+  <select name={data.name} id={data.name} className={className} value={data.value} onChange={(e) => onChange(e.target.value)}>
     {data.options && data.options.map(op => (
-      <option value={op.value.toString()}>{op.label}</option>
+      //@ts-ignore
+      <option value={op.value}>{op.label}</option>
     ))}
-  </input>
+  </select>
 );
 const InputCustom = ({data, onChange, className}:RenderFieldsProps) => (
   <input autoComplete='off' className={className}

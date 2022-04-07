@@ -34,7 +34,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
       <div className='filter-TB-editor-container'>
         {dataFields.length > 0 && dataFields.map((d: Field, key: any) => (
           <React.Fragment key={key}>
-            <div className="filter-TB-editor-container-tags" onClick={() => !fieldEditMode && onEdit(key)}>
+            <div className="filter-TB-editor-container-tags dropdown" onClick={() => !fieldEditMode && onEdit(key)}>
               <button type='button'
                 className={`filter-TB-editor-dropdown-container btn btn-sm btn-outline-secondary dropdown-toogle ${d.edit ? 'show' : ''}`}
                 onMouseEnter={() => setViewFilter(key)}
@@ -88,7 +88,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
           </React.Fragment>
         ))}
         {optionsFilter.length > 0 &&
-          <div className="filter-TB-editor-container-options" onClick={() => setOpenOptions(!openOptions)}>
+          <div className="filter-TB-editor-container-options dropdown" onClick={() => setOpenOptions(!openOptions)}>
             <button className={`btn btn-sm btn-outline-secondary dropdown-toogle ${openOptions ? 'show' : ""}`} type='button' data-bs-toggle="dropdown" aria-expanded="false">
               {configButtons &&
                 <React.Fragment>

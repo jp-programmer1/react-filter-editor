@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface optionSelect {
     label: string;
-    value: string | Array<any> | number | boolean | object;
+    value: any;
 }
 export interface fieldType {
     text: Function;
@@ -22,7 +22,7 @@ export interface Options {
 export interface Field extends Options {
     edit?: boolean;
     active?: boolean;
-    value?: string | Array<any> | number | boolean | object;
+    value?: any;
     tag?: string;
 }
 export interface UseFilter {
@@ -33,7 +33,7 @@ export interface UseFilter {
 }
 export interface FilterEditor {
     options: Array<Options>;
-    values: {};
+    values: any;
     className?: string;
     onChangeValues: (data: any) => void;
     getData: (data: any) => void;

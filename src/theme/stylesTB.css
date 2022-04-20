@@ -21,7 +21,6 @@
 }
 .filter-TB-editor-action-active{
   width: 10px;
-  transition: all .2s ease-in;
   cursor: pointer;
   margin-left: 0.5rem;
 }

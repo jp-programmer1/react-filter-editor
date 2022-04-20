@@ -69,9 +69,6 @@ export const useFilter = ({data, options, onChangeCallback, setVisibleValue}:Use
         else {
           copyData[index].edit = !copyData[index].edit;
           if (!copyData[index].edit) {
-            if (setVisibleValue) {
-              copyData[index].tag = setVisibleValue(d.name, d.value);
-            }
             onChangeCallbackValues(copyData);
           }
           return;
@@ -79,13 +76,16 @@ export const useFilter = ({data, options, onChangeCallback, setVisibleValue}:Use
       });
       setDataFields(copyData);
     }
-  }, [dataFields, onChangeCallbackValues, setVisibleValue]);
+  }, [dataFields, onChangeCallbackValues]);
 
   const onChange = useCallback((value, key) => {
     let copyData:Array<Field> = [...dataFields];
-    dataFields[key].value = value;
+    copyData[key].value = value;
+    if (setVisibleValue) {
+      copyData[key].tag = setVisibleValue(copyData[key].name, value);
+    }
     setDataFields(copyData);
-  }, [dataFields]);
+  }, [dataFields, setVisibleValue]);
 
   const onActivateFilter = useCallback((index) => {
     let copyData:Array<Field> = [...dataFields];

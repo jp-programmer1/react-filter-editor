@@ -42,7 +42,9 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                 style={{ ...d.styles, opacity: d.active ? 1 : 0.5 }}
               >
                 {d.icon && <i className={`${d.icon} filter-TC-editor-tag-icon`}></i>}
-                <span className='filter-TC-editor-tag'>{d.tag || d.value || d.label}</span>
+                <div className='filter-TC-editor-tag'>
+                  {d.tag || d.value !== "" && JSON.stringify(d.value) || d.label}
+                </div>
                 <div className='filter-TC-editor-action-active'>
                   {(key === viewFilter || d.edit) &&
                     <div onClick={() => onActivateFilter(key)} style={{ opacity: d.active ? 1 : 0.5 }}>

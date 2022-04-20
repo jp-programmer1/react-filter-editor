@@ -24,7 +24,8 @@ $ yarn add react-filter-editor
 ![jpprogrammer](https://avatars.githubusercontent.com/u/52465504?s=56&)
 ![andresceccoli](https://avatars.githubusercontent.com/u/7004266?s=56&)
 ### Financial Contributors
-![sitrack](https://lh3.googleusercontent.com/fd5MZKDqjzzKhtMW259JStq7AxGXVM0m6V_gtpNWjtGnwcBo4hMzcYrx6zljnW2RAHEEQFA=s170)
+<img src="https://app.sitrack.io/static/media/sitrack_color.22c61360.svg" alt="drawing" style="width:200px;"/>
+
 ## License
 
 Licensed under MIT

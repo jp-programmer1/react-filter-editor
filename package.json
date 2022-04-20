@@ -6,7 +6,9 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc -p . && ncp ./src/theme ./lib/styles"
+    "build": "npx tsc -p . && ncp ./src/theme ./lib/styles",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -27,12 +29,21 @@
   },
   "homepage": "https://github.com/jp-programmer1/react-filter-editor#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.10",
     "@types/react": "^17.0.43",
+    "babel-loader": "^8.2.5",
     "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "typescript": "^4.6.3"
   },
   "peerDependencies": {
-    "react": ">=16.11.0"
+    "react": ">=17.0.0"
   },
   "dependencies": {
     "ncp": "^2.0.0"

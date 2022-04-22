@@ -29,7 +29,7 @@ export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: 
           }
         })
       }
-      
+
       if (isStructureFieldsForce || filterDisabled.length === 0 || changeActive) {
         data.forEach((d: Field) => {
           let index = options.findIndex(op => op.name === d.name);
@@ -123,7 +123,18 @@ export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: 
     onChangeCallbackValues(copyData);
   }, [dataFields, onChangeCallbackValues]);
 
-  return ({ onAdd, onEdit, onRemove, onChange, dataFields, optionsFilter, onActivateFilter })
+  const getValue = useCallback((value:any) => {
+    if(value !== ""){
+      if(Array.isArray(value) || typeof value === 'object'){
+        return JSON.stringify(value);
+      }else{
+        return value;
+      }
+    }
+    return "";
+  }, []);
+
+  return ({ onAdd, onEdit, onRemove, onChange, dataFields, optionsFilter, onActivateFilter, getValue })
 }
 
 //@ts-ignore

@@ -14,4 +14,5 @@ export declare const useFilter: ({ data, options, onChangeCallback, setVisibleVa
     dataFields: Field[];
     optionsFilter: Options[];
     onActivateFilter: (index: any) => void;
+    getValue: (value: any) => any;
 };

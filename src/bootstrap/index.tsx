@@ -21,7 +21,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
   const [openOptions, setOpenOptions] = useState(false);
 
   const { dataFields, optionsFilter,
-          onAdd, onEdit,
+          onAdd, onEdit, getValue,
           onRemove, onChange,
           onActivateFilter } = useFilter({ data: values, options, onChangeCallback: onChangeValues, setVisibleValue });
 
@@ -43,7 +43,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
               >
                 {d.icon && <i className={`${d.icon} filter-TB-editor-tag-icon`}></i>}
                 <div className='filter-TC-editor-tag'>
-                  {d.tag || d.value !== "" && JSON.stringify(d.value) || d.label}
+                  {d.tag || getValue(d.value) || d.label}
                 </div>
                 <div className='filter-TB-editor-action-active'>
                   {(key === viewFilter || d.edit) &&

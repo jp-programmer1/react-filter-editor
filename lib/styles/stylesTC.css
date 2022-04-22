@@ -2,12 +2,14 @@
 /** ------------------------------ **/
 /* TAGS */
 .filter-TC-editor-container{
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
 }
 .filter-TC-editor-container-tags{
   margin-right: 0.5rem;
+  margin-bottom: 0.2rem;
   transition: all .3s ease-in-out;
 }
 .filter-TC-editor-btn{
@@ -68,6 +70,9 @@
   display: none!important;
 }
 /* OPTIONS */
+.filter-TC-editor-container-options{
+  margin-bottom: 0.2rem;
+}
 .filter-TC-editor-dropdown-menu{
   position: absolute;
   margin-top: 0.4rem;

@@ -58,11 +58,9 @@ export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: 
   }, [options, dataFields, setVisibleValue, dataFields, initRender]);
 
   useEffect(() => {
-    if (data) {
-      let values = [];
-      for (const key in data) values.push({ name: key, value: data[key], active: true });
-      structureDataFields(values);
-    }
+    let values = [];
+    for (const key in data) values.push({ name: key, value: data[key], active: true });
+    structureDataFields(values);
   }, [data]);
 
   const onChangeCallbackValues = useCallback((data) => {

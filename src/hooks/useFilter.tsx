@@ -11,11 +11,12 @@ import { Field, Options, UseFilter } from '../interfaces/Interfaces';
 export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: UseFilter) => {
   const [optionsFilter, setOptionsFilter] = useState<Array<Options>>([]);
   const [dataFields, setDataFields] = useState<Array<Field>>([]);
+  const [initRender, setInitRender] = useState(true);
 
   const structureDataFields = useCallback((data, isStructureFieldsForce?: boolean) => {
     let fields: Array<Field> = [];
     let currentField = dataFields.map(f => ({ name: f.name, value: f.value, active: f.active }));
-    if (!arraysEqual(currentField, data)) {
+    if (initRender || !arraysEqual(currentField, data)) {
       let filterDisabled = currentField.filter(e => !e.active);
       let filterActive = data.filter((e: any) => e.active);
       let changeActive = false;
@@ -52,8 +53,9 @@ export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: 
         setOptionsFilter(copyOptions);
         setDataFields(fields);
       }
+      setInitRender(false);
     }
-  }, [options, dataFields, setVisibleValue, dataFields]);
+  }, [options, dataFields, setVisibleValue, dataFields, initRender]);
 
   useEffect(() => {
     if (data) {

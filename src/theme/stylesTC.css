@@ -1,13 +1,17 @@
 /** CUSTOM **/
 /** ------------------------------ **/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap');
 /* TAGS */
 .filter-TC-editor-container{
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 .filter-TC-editor-container-tags{
   margin-right: 0.5rem;
+  margin-bottom: 0.2rem;
   transition: all .3s ease-in-out;
 }
 .filter-TC-editor-btn{
@@ -15,17 +19,20 @@
   border-radius: 3px;
   border: 1px solid gray;
   transition: all .3s ease-in-out;
+  padding: 0.4rem;
+  color: rgb(77, 77, 77);
+  cursor: pointer;
 }
 .filter-TC-editor-btn:hover{
   background-color: rgb(211, 210, 210);
 }
 .filter-TC-editor-btn-remove{
-  background-color: rgba(211, 12, 12, 0.657);
+  background-color: #F5421B;
   color: white;
+  border: none;
 }
 .filter-TC-editor-btn-remove:hover{
-  background-color: rgba(161, 11, 11, 0.657);
-  opacity: 0.8;
+  background-color: #e63e18;
 }
 .filter-TC-editor-container-tags .filter-TC-editor-dropdown-container{
   display: flex;
@@ -53,8 +60,8 @@
   margin-right: 1rem;
 }
 .filter-TC-editor-circle{
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 5rem;
   border: 2px solid rgb(46, 174, 46);
 }
@@ -68,13 +75,17 @@
   display: none!important;
 }
 /* OPTIONS */
+.filter-TC-editor-container-options{
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+  color: rgb(113, 113, 113);
+}
 .filter-TC-editor-dropdown-menu{
   position: absolute;
   margin-top: 0.4rem;
   background-color: white;
-  -webkit-box-shadow: 5px 5px 30px 5px rgba(0, 0, 0, 0.153); 
-  box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.153);
-  border-radius: 2px 0;
+  border: 1px solid rgba(113, 113, 113, 0.232);
+  border-radius: 4px;
   z-index: 999999;
 }
 .filter-TC-editor-option-icon{
@@ -84,11 +95,11 @@
   background-color: white;
   padding: 0;
   margin: 0;
-  border-radius: 2px 0;
+  border-radius: 4px;
+  border: 1px solid rgba(113, 113, 113, 0.232);
   position: absolute;
   width: 10rem;
-  -webkit-box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.29); 
-  box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.29);
+ 
   z-index: 999999;
 }
 .filter-TC-editor-options-dropdown-menu li{
@@ -97,6 +108,14 @@
   padding: 0.5rem;
 }
 .filter-TC-editor-options-dropdown-menu li:hover{
-  background-color: rgba(134, 133, 133, 0.337);
+  color: rgba(53, 53, 53, 0.766);
+  background-color: rgba(128, 128, 128, 0.113);
+}
+
+.filter-TC-editor-input{
+  height: 2rem;
+  border-radius: 4px;
+  padding: 0px 0px 0.1rem 0.4rem;
+  border: 1px solid rgba(113, 113, 113, 0.232);
 }
 /*------------------------------- */

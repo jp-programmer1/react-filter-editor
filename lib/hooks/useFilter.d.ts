@@ -6,12 +6,16 @@ import { Field, Options, UseFilter } from '../interfaces/Interfaces';
  * @param setVisibleValue
  * @returns {onAdd, onEdit, onRemove, onChange, dataFields, optionsFilter, onActivateFilter}
  */
-export declare const useFilter: ({ data, options, onChangeCallback, setVisibleValue }: UseFilter) => {
-    onAdd: (key: any) => void;
-    onEdit: (key: any) => void;
-    onRemove: (key: any) => void;
-    onChange: (value: any, key: any) => void;
-    dataFields: Field[];
-    optionsFilter: Options[];
-    onActivateFilter: (index: any) => void;
+export declare const useFilter: {
+    ({ data, options, onChangeCallback, setVisibleValue }: UseFilter): {
+        onAdd: (key: any) => void;
+        onEdit: (key: any) => void;
+        onRemove: (key: any) => void;
+        onChange: (value: any, key: any) => void;
+        dataFields: Field[];
+        optionsFilter: Options[];
+        onActivateFilter: (index: any) => void;
+        getValue: (value: any) => any;
+    };
+    parameters: any;
 };

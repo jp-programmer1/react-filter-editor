@@ -1,5 +1,5 @@
 import React from "react";
-import { fieldType, RenderFieldsProps} from "../interfaces/Interfaces";
+import { fieldFunctionType, RenderFieldsProps} from "../interfaces/Interfaces";
 
 const SelectCustom = ({data, onChange, className}:RenderFieldsProps) => (
   //@ts-ignore
@@ -20,7 +20,7 @@ const InputCustom = ({data, onChange, className}:RenderFieldsProps) => (
   />
 );
 
-const types:fieldType = {
+const types:fieldFunctionType = {
   "select": SelectCustom,
   "text": InputCustom,
   "number": InputCustom,

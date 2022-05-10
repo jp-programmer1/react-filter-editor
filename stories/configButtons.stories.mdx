@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Advanced/configButtons" />
+
+## configButtons 🛠
+
+#### Example 1
+
+```jsx
+import React, { useState, useMemo } from 'react';
+import { FilterEditor } from 'react-filter-editor';
+
+const options = [{ name:"person", label:"Person", fieldType: "string" }];
+const defaultValues = { person: "Andres Ceccoli" };
+
+const App = () => {
+  const [values, setValues] = useState({...defaultValues});
+
+  const configButtons = useMemo(() => ({
+    add: { icon: "fas fa-plus", text: "Add"} ,
+    remove: { icon: "fas fa-trash", text: "Remove" },
+    filterActive: { icon: "fas fa-square" },
+    filterDisabled: { icon: "fas fa-square" }
+  }), []);
+
+  return (
+    <FilterEditor options={options} values={values} onChangeValues={setValues} configButtons={configButtons} />
+  );
+};
+```
+
+#### Example 2
+```jsx
+import React, { useState, useMemo } from 'react';
+import { FilterEditor } from 'react-filter-editor';
+
+
+const options = [{ name:"person", label:"Person", fieldType: "string" }];
+const defaultValues = { person: "Andres Ceccoli" };
+
+const styles = { borderRadius: "4rem", width: "10px", height: "10px" };
+
+const App = () => {
+  const [values, setValues] = useState({...defaultValues});
+  
+  const configButtons = useMemo(() => ({
+    add: { addComponent: <h4>Add Filter</h4> } ,
+    remove: { removeComponent: <h3>Remove Filter</h3> },
+    filterActive: { filterActiveComponent: <span style={{...styles, backgroundColor: "green"}}></span> },
+    filterDisabled: { filterDisabledComponent: <span style={{...styles, backgroundColor: "red"}}></span> }
+  }), []);
+
+  return (
+    <FilterEditor options={options} values={values} onChangeValues={setValues} configButtons={configButtons} />
+  );
+};
+```

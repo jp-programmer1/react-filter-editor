@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Advanced/Options" />
+
+## Options 🛠
+
+### fieldComponent (React.Component)
+
+```jsx
+const FieldCustom = ({data, onChange, onEditField}) => (
+  <input 
+    type="text" 
+    value={data.value} 
+    onChange={(e) => onChange(e.target.value)}
+  />
+);
+
+const options = [
+  { name: "phone", label: "Cell Phone" fieldComponent: FieldCustom }
+];
+```
+
+### Pill styles
+
+```jsx
+const customPillStyles = { backgroundColor: "red", color: "white", border: "none" };
+
+const options = [
+  { name: "phone", label: "Cell Phone" fieldType: "text", styles: customPillStyles }
+];
+```

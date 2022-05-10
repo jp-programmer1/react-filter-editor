@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Advanced/getData" />
+
+## getData() 🛠
+
+```jsx
+import React, { useState, useCallback } from 'react';
+import { FilterEditor } from 'react-filter-editor';
+
+
+const options = [
+  { name:"age", label:"Age", fieldType: "number" },
+];
+
+const defaultValues = {
+  age: "31/05/2000"
+}
+
+const App = () => {
+  const [values, setValues] = useState({...defaultValues});
+  const [data, setData] = useState([])
+
+  const getAllData = useCallback((data) => {
+    console.log(data);
+    //outputs
+    // [{active: true, edit: true, fieldType: "number", label: "Age", name: "age", value: "31/05/2000"}]
+    setData(data);
+  }, []);
+
+  return (
+    <>
+      {data.map((d, index) => (<h1 key={index}>Edit {d.edit ? d.label : ""}</h1>))}
+      <FilterEditor options={options} values={values} onChangeValues={setValues} getData={getAllData} />
+    </>
+  );
+};
+```

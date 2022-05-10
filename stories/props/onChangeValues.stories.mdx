@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Props/onChangeValues" />
+
+## onChangeValues(data)
+function  to return select value.
+
+¡¡important!! does not include disabled filters.
+
+```jsx
+import React, { useState, useCallback } from 'react';
+import { FilterEditor } from 'react-filter-editor';
+
+const options = [
+  { name:"name", label:"Name", fieldType: "text" },
+  { name:"email", label:"Email", fieldType: "text", icon: "fas fa-envelope" },
+  { name:"age", label:"Age", fieldType: "number" },
+];
+
+const App = () => {
+  const [values, setValues] = useState({});
+
+  return (
+    <FilterEditor options={options} values={values} onChangeValues={setValues} />
+  );
+};
+```

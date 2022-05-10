@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Advanced/setVisibleValue" />
+<Meta title="Props/setVisibleValue" />
 
 ## setVisibleValue(nameFilter, value) 🙈
 
@@ -15,21 +15,15 @@ const options = [
   { name:"age", label:"Age", fieldType: "number" },
 ];
 
-const defaultValues = {
-  name: "Juan",
-  email: "jpprogrammer1@gmail.com",
-  age: "31/05/2000"
-}
-
 const App = () => {
-  const [values, setValues] = useState({...defaultValues});
+  const [values, setValues] = useState({});
 
    const getTag = useCallback((name, value) => {
     if(name === "name"){
-      return "Name Person: " + value;
+      return `Name Person ${value}`;
     }
     if(name === "email"){
-      return <><i className="fas fa-at"> {value}</>
+      return <i className="fas fa-at">{value}</i>;
     }
   }, []);
 

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Advanced/Options" />
+<Meta title="Props/Options" />
 
 ## Options 🛠
 
@@ -17,6 +17,16 @@ const FieldCustom = ({data, onChange, onEditField}) => (
 
 const options = [
   { name: "phone", label: "Cell Phone" fieldComponent: FieldCustom }
+];
+```
+
+### fieldType
+text | number | date | select
+
+#### - select
+```jsx
+const options = [
+  { name: "color", label: "Color" fieldType: "select", options: [{label: "Red", value: "#e74c3c"}] }
 ];
 ```
 

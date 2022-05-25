@@ -73,7 +73,15 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                    onMouseLeave={() => setFieldEditMode(false)}>
                 <div className='filter-TC-editor-container-field'>
                   <div className="filter-TC-editor-field">
-                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]} onEditField={setFieldEditMode} className="filter-TC-editor-input" />
+                    <FieldComponent onChange={(value: any) => onChange(value, key)} 
+                                    data={dataFields[key]} 
+                                    onEditField={setFieldEditMode} 
+                                    className="filter-TC-editor-input"
+                                    onEnter={() => {
+                                      setFieldEditMode(false);
+                                      onEdit(key);
+                                    }}
+                      />
                   </div>
                     <button type='button' className='filter-TC-editor-btn filter-TC-editor-btn-remove' onClick={() => {onRemove(key); setFieldEditMode(false);}}>
                       {configButtons &&

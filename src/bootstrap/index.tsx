@@ -73,7 +73,14 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                    onMouseLeave={() => setFieldEditMode(false)}>
                 <div className='filter-TB-editor-container-field'>
                   <div className="filter-TB-editor-field">
-                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]} onEditField={setFieldEditMode} className="form-control" />
+                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]} 
+                                    onEditField={setFieldEditMode} 
+                                    className="form-control" 
+                                    onEnter={() => {
+                                      setFieldEditMode(false);
+                                      onEdit(key);
+                                    }}
+                    />
                   </div>
                     <button type='button' className='btn btn-danger btn-sm' onClick={() => {onRemove(key); setFieldEditMode(false);}}>
                       {configButtons &&

@@ -54,4 +54,5 @@ export interface RenderFieldsProps{
   onChange: (value:any) => void;
   onEditField?: (edit:boolean) => void;
   className?:string
+  onEnter?: (e:any) => void; 
 }

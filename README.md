@@ -2,7 +2,7 @@
 ### Documentation
 [React Filter Editor Docs ](https://storybook--hilarious-dieffenbachia-334eae.netlify.app/?path=/story/installation--page)
 
-## Installation
+## Getting Started 🚀
 ```
 $ npm install react-filter-editor
 $ yarn add react-filter-editor
@@ -20,7 +20,11 @@ $ yarn add react-filter-editor
 	    <FilterEditor options={options} values={values} onChangeValues={setValues}/>
     );
   }
-  ```
+```
+## Import component for Bootstrap v5
+```
+  import FilterEditor from 'react-filter-editor/lib/bootstrap'; 
+```
 ## Contributors 👽
 ### Code Contributors
 ![jpprogrammer](https://avatars.githubusercontent.com/u/52465504?s=56&)

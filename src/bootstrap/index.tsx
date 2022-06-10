@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { FieldComponent } from '../render-fields/RenderFields';
+import React, { useEffect, useState } from 'react'
+import { FieldComponent, GetComponentCustom, GetComponentOptions, StatusFilter } from '../render-fields/RenderFields';
 import { Field, FilterEditor, Options } from '../interfaces/Interfaces';
 import { useFilter } from '../hooks/useFilter';
 import '../../lib/styles/stylesTB.css';
@@ -8,22 +8,23 @@ import '../../lib/styles/stylesTB.css';
  * @param options object Array [{label:"Person Name", value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
  * @param values object {person: "Juan", date: "12/12/2019"};
  * @param onChangeValues function  to return select value (data:values) => void;
- * @param setVisibleValue function options to return tag value (nameFilter, value) => return string;
+ * @param setVisibleValue function options to return tag value ({label, name, value, fieldType}) => return string;
  * @param getData function to query all data [{active: true, color: "red", edit: true, fieldType: "number", label: "Login Code", name: "loginCode", value: ""}];
- * @param configButtons object {add: {icon, text, addComponent}, remove: {icon, text, removeComponent}, filterActive: {icon, filterActiveComponent}, filterDisabled: {icon, filterDisabledComponent}}
+ * @param configButtons object {add: {icon, text}, remove: {icon, text, removeComponent}, filterActive: {icon, filterActiveComponent}, filterDisabled: {icon, filterDisabledComponent}}
+ * @param optionsComponent render options in dropdown
  * @param className container className
  * @returns {JSX.Element}
  * @constructor
  */
-const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setVisibleValue, configButtons, className }: FilterEditor) => {
+const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setVisibleValue, configButtons, className, optionsComponent }: FilterEditor) => {
   const [viewFilter, setViewFilter] = useState<Number>();
   const [fieldEditMode, setFieldEditMode] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
 
   const { dataFields, optionsFilter,
-          onAdd, onEdit, getValue,
-          onRemove, onChange,
-          onActivateFilter } = useFilter({ data: values, options, onChangeCallback: onChangeValues, setVisibleValue });
+    onAdd, onEdit, getValue,
+    onRemove, onChange,
+    onActivateFilter } = useFilter({ data: values, options, onChangeCallback: onChangeValues, setVisibleValue });
 
   useEffect(() => {
     getData && getData(dataFields)
@@ -47,50 +48,51 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                 </div>
                 <div className='filter-TB-editor-action-active'>
                   {(key === viewFilter || d.edit) &&
-                    <div onClick={() => onActivateFilter(key)} style={{ opacity: d.active ? 1 : 0.5 }}>
-                      {d.active && configButtons &&
-                        <>
-                          {configButtons.filterActive.icon && !configButtons.filterActive.filterActiveComponent ? <i className={configButtons.filterActive.icon}></i>
-                          : configButtons.filterActive.filterActiveComponent}
-                        </>
+                    <React.Fragment>
+                      {configButtons && configButtons.filterActive && configButtons.filterDisabled &&
+                        <StatusFilter onAction={() => onActivateFilter(key)} configButtons={configButtons} active={d.active}/>
                       }
-                      {!d.active && configButtons && 
-                        <>
-                          {configButtons.filterDisabled.icon && !configButtons.filterDisabled.filterDisabledComponent ? <i className={configButtons.filterDisabled.icon}></i>
-                          : configButtons.filterDisabled.filterDisabledComponent}
-                        </>
-                      }
-                      {!configButtons &&
+                      {!configButtons || (!configButtons.filterActive && !configButtons.filterDisabled) &&
                         <div className={`filter-TB-editor-circle ${d.active ? 'circle-active' : ''}`} ></div>
                       }
-                    </div>
+                    </React.Fragment>
                   }
                 </div>
               </button>
-              <div className={`dropdown-menu filter-TB-editor-dropdown-menu ${d.edit ? 'show' : ''}`} 
-                   onMouseEnter={() => setFieldEditMode(true)}
-                   x-placement="bottom-start"
-                   onMouseLeave={() => setFieldEditMode(false)}>
+              <div className={`dropdown-menu filter-TB-editor-dropdown-menu ${d.edit ? 'show' : ''}`}
+                onMouseEnter={() => setFieldEditMode(true)}
+                x-placement="bottom-start"
+                onMouseLeave={() => setFieldEditMode(false)}>
                 <div className='filter-TB-editor-container-field'>
                   <div className="filter-TB-editor-field">
-                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]} 
-                                    onEditField={setFieldEditMode} 
-                                    className="form-control" 
-                                    onEnter={() => {
-                                      setFieldEditMode(false);
-                                      onEdit(key);
-                                    }}
+                    <FieldComponent onChange={(value: any) => onChange(value, key)} data={dataFields[key]}
+                      onEditField={setFieldEditMode}
+                      className="form-control"
+                      onDisableEditMode={() => {
+                        setFieldEditMode(false);
+                        onEdit(key);
+                      }}
                     />
                   </div>
-                    <button type='button' className='btn btn-danger btn-sm' onClick={() => {onRemove(key); setFieldEditMode(false);}}>
-                      {configButtons &&
-                        <React.Fragment>
-                          {configButtons.remove.icon && !configButtons.remove.removeComponent && <><i className={configButtons.remove.icon}></i>{configButtons.remove.text}</>}
-                          {configButtons.remove.removeComponent && configButtons.remove.removeComponent}
-                        </React.Fragment>
+                  {configButtons && configButtons.remove &&
+                    <React.Fragment>
+                      {configButtons.remove.icon && !configButtons.remove.removeComponent &&
+                        <button type='button' className='btn btn-danger btn-sm' onClick={() => { onRemove(key); setFieldEditMode(false); }}>
+                          {configButtons.remove && configButtons.remove.icon && !configButtons.remove.removeComponent &&
+                            <><i className={configButtons.remove.icon}></i>{configButtons.remove.text}</>
+                          }
+                        </button>
                       }
-                      {!configButtons && "Remove"}
+                      {configButtons.remove.removeComponent && !configButtons.remove.icon &&
+                        <GetComponentCustom component={configButtons.remove.removeComponent} onAction={() => { onRemove(key); setFieldEditMode(false); }} />
+                      }
+                    </React.Fragment>
+                  }
+                  {(!configButtons || !configButtons.remove) &&
+                    <button type='button' className='btn btn-danger btn-sm' onClick={() => { onRemove(key); setFieldEditMode(false); }}>
+                      Remove
                     </button>
+                  }
                 </div>
               </div>
             </div>
@@ -99,30 +101,29 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
         {optionsFilter.length > 0 &&
           <div className="filter-TB-editor-container-options dropdown" onClick={() => setOpenOptions(!openOptions)}>
             <button className={`btn btn-sm btn-outline-secondary dropdown-toogle ${openOptions ? 'show' : ""}`} type='button' data-bs-toggle="dropdown" aria-expanded="false">
-              {configButtons &&
-                <React.Fragment>
-                  {configButtons.add.icon && !configButtons.add.addComponent && <><i className={configButtons.add.icon}></i> {configButtons.add.text}</>}
-                  {configButtons.add.addComponent && configButtons.add.addComponent}
-                </React.Fragment>
-              }
-              {!configButtons && "Add Filter"}
+              {configButtons && configButtons.add && configButtons.add.icon && <><i className={configButtons.add.icon}></i> {configButtons.add.text}</>}
+              {(!configButtons || !configButtons.add) && "Add Filter"}
             </button>
-            <ul className={`filter-TB-editor-dropdown-menu dropdown-menu ${openOptions ? 'show' : ""}`} >
-              {optionsFilter.map((op: Options, key: any) => (
-                <li onClick={() => onAdd(op.name)} key={key} className="dropdown-item" data-rr-ui-dropdown-item>
-                  <a>
-                    {op.optionComponent && op.optionComponent}
-                    {!op.optionComponent && op.icon && <><i className={`filter-TB-editor-option-icon ${op.icon}`}></i> {op.label}</>}
-                    {!op.optionComponent && !op.icon && op.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+
+            {optionsComponent && 
+              <div className={`filter-TB-editor-dropdown-menu dropdown-menu ${openOptions ? 'show' : ""}`}>
+                <GetComponentOptions component={optionsComponent} options={optionsFilter} onAddFilter={onAdd} />
+              </div>
+            }
+            {!optionsComponent && 
+              <ul className={`filter-TB-editor-dropdown-menu dropdown-menu ${openOptions ? 'show' : ""}`} >
+                {optionsFilter.map((op: Options, key: any) => (
+                  <li onClick={() => onAdd(op.name)} key={key} className="dropdown-item" data-rr-ui-dropdown-item>
+                    <a><i className={`filter-TB-editor-option-icon ${op.icon}`}></i> {op.label}</a>
+                  </li>
+                ))}
+              </ul>
+            }
           </div>
         }
       </div>
     </div>
-    
+
   )
 }
 

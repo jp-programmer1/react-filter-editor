@@ -1,6 +1,6 @@
 {
   "name": "react-filter-editor",
-  "version": "1.3.3",
+  "version": "2.0.0",
   "description": "Library to filters",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

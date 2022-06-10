@@ -45,7 +45,7 @@ export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: 
 
         for (let index = 0; index < fields.length; index++) {
           if (setVisibleValue) {
-            fields[index].tag = setVisibleValue(fields[index].name, fields[index].value);
+            fields[index].tag = setVisibleValue(getDataCallback(fields[index]));
           } else {
             break;
           }
@@ -106,7 +106,7 @@ export const useFilter = ({ data, options, onChangeCallback, setVisibleValue }: 
     let copyData: Array<Field> = [...dataFields];
     copyData[key].value = value;
     if (setVisibleValue) {
-      copyData[key].tag = setVisibleValue(copyData[key].name, value);
+      copyData[key].tag = setVisibleValue(getDataCallback(copyData[key]));
     }
     setDataFields(copyData);
   }, [dataFields, setVisibleValue]);
@@ -147,3 +147,10 @@ const objectsEqual = (o1: any, o2: any) => (
 
 const arraysEqual = (a1: Array<object>, a2: Array<object>) =>
   a1.length === a2.length && a1.every((o: any, idx: any) => objectsEqual(o, a2[idx]));
+
+const getDataCallback = (data: Field) => ({
+  fieldType: data.fieldType,
+  label: data.label,
+  name: data.name,
+  value: data.value
+});

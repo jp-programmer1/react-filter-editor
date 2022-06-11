@@ -1,3 +1,3 @@
 import FilterEditor from "./custom";
 
-export { FilterEditor };
+export default FilterEditor;

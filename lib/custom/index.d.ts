@@ -1,8 +1,8 @@
 /// <reference types="react" />
-import { FilterEditor } from '../interfaces/Interfaces';
+import { FilterEditor as InterfaceFilterEditor } from '../interfaces/Interfaces';
 import '../../lib/styles/stylesTC.css';
 /**
- * @param options object Array [{label:"Person Name", value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
+ * @param options object Array [{label:"Person Name", styles, value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
  * @param values object {person: "Juan", date: "12/12/2019"};
  * @param onChangeValues function  to return select value (data:values) => void;
  * @param setVisibleValue function options to return tag value ({label, name, value, fieldType}) => return string;
@@ -13,5 +13,5 @@ import '../../lib/styles/stylesTC.css';
  * @returns {JSX.Element}
  * @constructor
  */
-declare const FilterEditor: ({ options, values, onChangeValues, getData, setVisibleValue, configButtons, className, optionsComponent }: FilterEditor) => JSX.Element;
+declare const FilterEditor: ({ options, values, onChangeValues, getData, setVisibleValue, configButtons, className, optionsComponent }: InterfaceFilterEditor) => JSX.Element;
 export default FilterEditor;

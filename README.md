@@ -10,7 +10,7 @@ $ yarn add react-filter-editor
 ## Integration
 ```
   import React, { useState } from 'react';
-  import { FilterEditor } from 'react-filter-editor';
+  import FilterEditor from 'react-filter-editor';
   
   const  options  = [{ name:"name", label:"Name", fieldType: "text" }];
   

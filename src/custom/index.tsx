@@ -6,7 +6,7 @@ import { FieldComponent, GetComponentCustom, GetComponentOptions, StatusFilter }
 
 /**
  * @param options object Array [{label:"Person Name", styles, value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
- * @param values object {person: "Juan", date: "12/12/2019"};
+ * @param values object {person: "Juan", date: "12/12/2019"}
  * @param onChangeValues function  to return select value (data:values) => void;
  * @param setVisibleValue function options to return tag value ({label, name, value, fieldType}) => return string;
  * @param getData function to query all data [{active: true, color: "red", edit: true, fieldType: "number", label: "Login Code", name: "loginCode", value: ""}];

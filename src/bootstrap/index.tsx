@@ -53,7 +53,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
                         <StatusFilter onAction={() => onActivateFilter(key)} configButtons={configButtons} active={d.active}/>
                       }
                       {!configButtons || (!configButtons.filterActive && !configButtons.filterDisabled) &&
-                        <div className={`filter-TB-editor-circle ${d.active ? 'circle-active' : ''}`} ></div>
+                        <div className={`filter-TB-editor-circle ${d.active ? 'circle-active' : ''}`} onClick={() => onActivateFilter(key)}></div>
                       }
                     </React.Fragment>
                   }

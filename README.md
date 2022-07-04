@@ -3,7 +3,8 @@
 
 #  React-Filter-Editor 🔎
 
-  
+[Demo](https://k9yuzr.csb.app/)
+[Code](https://codesandbox.io/s/react-filter-editor-example-k9yuzr)
 
 ###  Documentation
 

@@ -2,7 +2,7 @@
 import { FilterEditor as InterfaceFilterEditor } from '../interfaces/Interfaces';
 import '../../lib/styles/stylesTB.css';
 /**
- * @param options object Array [{label:"Person Name", value:"name", styles, icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
+ * @param options object Array [{label:"Person Name", styles, value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:({data, onChange, onEditField, onDisableEditMode}) => FieldComponent}];
  * @param values object {person: "Juan", date: "12/12/2019"};
  * @param onChangeValues function  to return select value (data:values) => void;
  * @param setVisibleValue function options to return tag value ({label, name, value, fieldType}) => return string;

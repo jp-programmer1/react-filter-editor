@@ -5,7 +5,7 @@ import '../../lib/styles/stylesTC.css';
 import { FieldComponent, GetComponentCustom, GetComponentOptions, StatusFilter } from '../render-fields/RenderFields';
 
 /**
- * @param options object Array [{label:"Person Name", styles, value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:(data, onChange, onEditField) => FieldComponent}];
+ * @param options object Array [{label:"Person Name", styles, value:"name", icon: "fas fa-user", fieldType?: "string", fieldComponent?:({data, onChange, onEditField, onDisableEditMode}) => FieldComponent}];
  * @param values object {person: "Juan", date: "12/12/2019"}
  * @param onChangeValues function  to return select value (data:values) => void;
  * @param setVisibleValue function options to return tag value ({label, name, value, fieldType}) => return string;
@@ -112,7 +112,7 @@ const FilterEditor = ({ options = [], values = {}, onChangeValues, getData, setV
               <ul className={`filter-TC-editor-options-dropdown-menu filter-TC-${openOptions ? 'show' : "hide"}`} >
                 {optionsFilter.map((op: Options, key: any) => (
                   <li onClick={() => onAdd(op.name)} key={key} className="filter-TC-editor-dropdown-item" data-rr-ui-dropdown-item>
-                    <a><i className={`filter-TC-editor-option-icon ${op.icon}`}></i>x {op.label}</a>
+                    <a><i className={`filter-TC-editor-option-icon ${op.icon}`}></i> {op.label}</a>
                   </li>
                 ))}
               </ul>

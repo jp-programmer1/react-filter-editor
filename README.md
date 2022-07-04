@@ -81,7 +81,7 @@ import FilterEditor from 'react-filter-editor/lib/bootstrap';
               value:"name", 
               icon: "fas fa-user", 
               fieldType?: select || text || number || date, 
-              fieldComponent?:({onChange, data, onEditField, onDisabledEditMode}) => JSX.Element
+              fieldComponent?:({onChange, data, onEditField, onDisableEditMode}) => JSX.Element
           }
        ]
 

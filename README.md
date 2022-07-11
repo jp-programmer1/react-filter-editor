@@ -79,7 +79,7 @@ import FilterEditor from 'react-filter-editor/lib/bootstrap';
          {
               label:"Person Name", 
               styles: {color: "red"},
-              value:"name", 
+              name:"name", 
               icon: "fas fa-user", 
               fieldType?: select || text || number || date, 
               fieldComponent?:({onChange, data, onEditField, onDisableEditMode}) => JSX.Element
